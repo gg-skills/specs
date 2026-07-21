@@ -8,8 +8,8 @@
  * and stdout/stderr reporting used to judge spec readiness before finalize workflows.
  * Flow: parse flags -> resolve spec path -> read markdown -> evaluate checklist -> emit report or exit non-zero on read errors.
  *
- * @testing CLI: npx tsx skills/specs/scripts/check-spec-completeness.ts --latest
- * @testing CLI: npx tsx skills/specs/scripts/check-spec-completeness.ts --spec .specs/2026-05-19-test/01-auth-bug.md --json
+ * @testing CLI: npx tsx .agents/skills/specs/scripts/check-spec-completeness.ts --latest
+ * @testing CLI: npx tsx .agents/skills/specs/scripts/check-spec-completeness.ts --spec .specs/2026-05-19-test/01-auth-bug.md --json
  *
  * @see skills/specs/SKILL.md - Canonical specs skill that defines how numbered specs are authored and anchors the checklist semantics this script enforces.
  * @see skills/specs/scripts/finalize-specs.ts - Companion finalize script referenced by checklist item 14 so operators know the next workflow step after a passing score.

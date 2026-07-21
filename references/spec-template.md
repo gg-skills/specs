@@ -119,7 +119,7 @@ When multiple specs share a root cause:
 ## Publish Command
 
 ```bash
-npx tsx skills/specs/scripts/finalize-specs.ts \
+npx tsx .agents/skills/specs/scripts/finalize-specs.ts \
   --specs-dir ".specs/YYYY-MM-DD-<slug>"
 ```
 

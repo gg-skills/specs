@@ -44,20 +44,20 @@ For a direct command lookup, see [Quick Commands](#quick-commands) below.
 
 ```bash
 # Initialize a spec set with N placeholder files
-npx tsx skills/specs/scripts/init-specs.ts --slug "<slug>" --title "<title>" --count <N>
+npx tsx .agents/skills/specs/scripts/init-specs.ts --slug "<slug>" --title "<title>" --count <N>
 
 # Finalize, commit, and push the latest spec set
-npx tsx skills/specs/scripts/finalize-specs.ts --latest
+npx tsx .agents/skills/specs/scripts/finalize-specs.ts --latest
 
 # Dry-run to preview what finalize would do
-npx tsx skills/specs/scripts/finalize-specs.ts --specs-dir "YYYY-MM-DD-<slug>" --dry-run
+npx tsx .agents/skills/specs/scripts/finalize-specs.ts --specs-dir "YYYY-MM-DD-<slug>" --dry-run
 
 # Check spec completeness (14-item checklist)
-npx tsx skills/specs/scripts/check-spec-completeness.ts --latest
-npx tsx skills/specs/scripts/check-spec-completeness.ts --spec <spec-file.md>
+npx tsx .agents/skills/specs/scripts/check-spec-completeness.ts --latest
+npx tsx .agents/skills/specs/scripts/check-spec-completeness.ts --spec <spec-file.md>
 
 # Validate spec structure
-npx tsx skills/specs/scripts/validate-specs.ts --specs-dir <path>
+npx tsx .agents/skills/specs/scripts/validate-specs.ts --specs-dir <path>
 ```
 
 For full script flags and options, see `scripts/init-specs.ts` and `scripts/finalize-specs.ts`.

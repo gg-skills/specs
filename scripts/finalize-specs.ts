@@ -8,8 +8,8 @@
  * shelling to git.
  *
  * @example
- * tsx skills/specs/scripts/finalize-specs.ts --latest
- * tsx skills/specs/scripts/finalize-specs.ts \
+ * tsx .agents/skills/specs/scripts/finalize-specs.ts --latest
+ * tsx .agents/skills/specs/scripts/finalize-specs.ts \
  *   --specs-dir 2026-04-30-my-feature --dry-run
  *
  * @testing CLI manual: npm run file-overview-standards:target-brief -- --file skills/specs/scripts/finalize-specs.ts

@@ -8,9 +8,9 @@
  * without touching git.
  *
  * @example
- * tsx skills/specs/scripts/init-specs.ts \
+ * tsx .agents/skills/specs/scripts/init-specs.ts \
  *   --slug my-feature --title "My Feature" --count 3
- * tsx skills/specs/scripts/init-specs.ts \
+ * tsx .agents/skills/specs/scripts/init-specs.ts \
  *   --slug my-feature --dry-run
  *
  * @testing CLI manual: npm run file-overview-standards:target-brief -- --file skills/specs/scripts/init-specs.ts
