@@ -198,7 +198,7 @@ When presenting completed specs, include:
 3. Cluster analysis showing which specs share root causes.
 4. Recommended implementation order based on clustering.
 5. Confirmation that spec artifacts were committed and pushed.
-6. A `CHOOSEABLE_OPTIONS` block ending the response (context-adapted, recommended option first).
+6. A `CHOOSEABLE_OPTIONS` block ending the response (context-adapted, recommended option first), presented per `chooseable-options/SKILL.md`: printed tokens **and** the harness Ask User picker when that tool is available.
 
 Required option families (rename to fit context):
 
