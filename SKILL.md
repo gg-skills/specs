@@ -145,7 +145,7 @@ A spec with any of these must be fixed before finalizing:
 3. Keep every claim tied to concrete evidence (runbook observations, log excerpts, test results, screenshots). Do not create specs without evidence.
 4. Use repository-relative paths throughout. Runbook references must use relative markdown links that resolve from the spec file's location.
 5. Number specs in priority order (Critical first). User Journey diagrams must show the experience from the user's perspective with timing estimates.
-6. Every spec set must end with a `CHOOSEABLE_OPTIONS` block. Keep the recommended option first and include at least one generation path each for plans, studies, online research, and comparisons.
+6. Every spec set must end with a `CHOOSEABLE_OPTIONS` block presented per `chooseable-options/SKILL.md` (printed tokens **and** the harness Ask User picker when available). Keep the recommended option first and include at least one generation path each for plans, studies, online research, and comparisons.
 7. After completing a spec set, run the finalize script immediately. Do not leave spec artifacts uncommitted or unpushed.
 8. Never reconstruct shell commands, CLI flags, or setup steps from memory — always read the relevant reference file first.
 9. After creating or updating any spec markdown file, generate its sibling HTML with `scripts/render-markdown-html.ts` and report the **absolute paths** of the markdown file(s) and the HTML page(s). Paths **inside** spec Key Files tables stay repository-relative.

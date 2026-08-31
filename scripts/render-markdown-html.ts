@@ -8,8 +8,8 @@
  *
  * @example
  * ```bash
- * npx tsx .agents/skills/specs/scripts/render-markdown-html.ts --input .studies/.../study-foo.md
- * npx tsx .agents/skills/specs/scripts/render-markdown-html.ts --dir .studies/.../
+ * npx tsx .agents/skills/specs/scripts/render-markdown-html.ts --input .specs/.../01-topic.md
+ * npx tsx .agents/skills/specs/scripts/render-markdown-html.ts --dir .specs/.../
  * ```
  *
  * @see skills/specs/SKILL.md - Policy that requires HTML twins and absolute-path reporting.
