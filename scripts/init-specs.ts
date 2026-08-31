@@ -22,6 +22,8 @@
 import fs from "node:fs";
 import path from "node:path";
 
+import { renderMarkdownDirectory } from "./render-markdown-html";
+
 /**
  * Parsed CLI options for spec-bundle scaffolding after validation and path normalization.
  *
@@ -349,12 +351,15 @@ function main(): void {
     dryRun: args.dryRun,
   });
 
+  const htmlResults = args.dryRun ? [] : renderMarkdownDirectory(specsDir);
+
   const output = {
     dryRun: args.dryRun,
     specsRoot,
     specsDir,
     specFiles,
     readmePath,
+    htmlFiles: htmlResults.map((result) => result.html),
     slug: args.slug,
     date: dateStr,
     count: args.count,

@@ -22,6 +22,8 @@ import { execSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 
+import { renderMarkdownDirectory } from "./render-markdown-html";
+
 /**
  * Parsed finalize-specs CLI flags after argv normalization.
  *
@@ -256,6 +258,7 @@ function main(): void {
       : `specs(ux): publish ${folderName} (${specCount} specs)`;
 
   const branchName = runGitCommand(["rev-parse", "--abbrev-ref", "HEAD"], repoRoot);
+  const htmlResults = args.dryRun ? [] : renderMarkdownDirectory(resolvedSpecs.absolutePath);
 
   if (!args.dryRun) {
     runGitCommand(["add", "--", resolvedSpecs.relativePath], repoRoot);
@@ -291,6 +294,8 @@ function main(): void {
     specCount,
     commitMessage,
     pushed: !args.dryRun,
+    markdownFiles: htmlResults.map((result) => result.markdown),
+    htmlFiles: htmlResults.map((result) => result.html),
   };
 
   console.log(JSON.stringify(output, null, 2));

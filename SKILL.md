@@ -58,6 +58,10 @@ npx tsx .agents/skills/specs/scripts/check-spec-completeness.ts --spec <spec-fil
 
 # Validate spec structure
 npx tsx .agents/skills/specs/scripts/validate-specs.ts --specs-dir <path>
+
+# After any spec markdown write: generate sibling HTML and print absolute paths
+npx tsx .agents/skills/specs/scripts/render-markdown-html.ts --input ".specs/YYYY-MM-DD-<slug>/01-<topic>.md"
+npx tsx .agents/skills/specs/scripts/render-markdown-html.ts --dir ".specs/YYYY-MM-DD-<slug>"
 ```
 
 For full script flags and options, see `scripts/init-specs.ts` and `scripts/finalize-specs.ts`.
@@ -144,6 +148,7 @@ A spec with any of these must be fixed before finalizing:
 6. Every spec set must end with a `CHOOSEABLE_OPTIONS` block. Keep the recommended option first and include at least one generation path each for plans, studies, online research, and comparisons.
 7. After completing a spec set, run the finalize script immediately. Do not leave spec artifacts uncommitted or unpushed.
 8. Never reconstruct shell commands, CLI flags, or setup steps from memory — always read the relevant reference file first.
+9. After creating or updating any spec markdown file, generate its sibling HTML with `scripts/render-markdown-html.ts` and report the **absolute paths** of the markdown file(s) and the HTML page(s). Paths **inside** spec Key Files tables stay repository-relative.
 
 ## Standard Output Layout
 
@@ -151,6 +156,7 @@ Inside each dated spec folder:
 
 1. Numbered spec files: `01-<topic>.md` through `NN-<topic>.md` (Critical = lowest numbers).
 2. Optional `README.md` linking to all specs with a summary table and cluster analysis.
+3. Sibling HTML for each of those markdown files (`01-<topic>.html`, `README.html`, …).
 
 For the exact file structure and section templates, see `references/spec-template.md`.
 
@@ -169,6 +175,7 @@ For the exact file structure and section templates, see `references/spec-templat
    - Ensure Runbook References use relative links that resolve correctly.
    - Build User Journey diagrams from actual observed behavior, not hypotheticals.
    - Populate Key Files tables by tracing the code path, not guessing.
+   - After each markdown write, run `render-markdown-html.ts` so the spec has a sibling `.html`.
 5. **Review cross-references.**
    - Verify that all relative links resolve to existing files.
    - Check that Key Files paths are correct repository-relative paths.
@@ -186,11 +193,12 @@ For the exact file structure and section templates, see `references/spec-templat
 
 When presenting completed specs, include:
 
-1. Summary table of all specs with number, title, priority, and affected paths.
-2. Cluster analysis showing which specs share root causes.
-3. Recommended implementation order based on clustering.
-4. Confirmation that spec artifacts were committed and pushed.
-5. A `CHOOSEABLE_OPTIONS` block ending the response (context-adapted, recommended option first).
+1. The **absolute path** of each spec markdown file that was created or updated, and the **absolute path** of its HTML twin.
+2. Summary table of all specs with number, title, priority, and affected paths.
+3. Cluster analysis showing which specs share root causes.
+4. Recommended implementation order based on clustering.
+5. Confirmation that spec artifacts were committed and pushed.
+6. A `CHOOSEABLE_OPTIONS` block ending the response (context-adapted, recommended option first).
 
 Required option families (rename to fit context):
 
@@ -278,6 +286,7 @@ Optional: `GENERATE_VISUAL_EXPLANATION_PACKET` through explain when sequencing i
 5. **Forgetting the CHOOSEABLE_OPTIONS block.** Every completed spec set must end with this block before finalizing.
 6. **Committing files outside the spec folder.** The finalize script stages only the spec directory; keep unrelated changes separate.
 7. **Numbering specs by discovery order rather than priority.** Reorder so Critical specs get the lowest numbers.
+8. **Skipping HTML twins or reporting only relative paths.** After any spec markdown write, generate sibling HTML and give the user absolute paths to the files (Key Files tables inside the spec stay repository-relative).
 
 ## Guidance Alignment
 
@@ -296,4 +305,5 @@ The `references/` directory contains a flat set of Markdown files (no subfolders
 ## Scripts
 
 - `scripts/init-specs.ts` — Initializes `.specs/YYYY-MM-DD-<slug>/` with numbered placeholder spec files and a `README.md`.
-- `scripts/finalize-specs.ts` — Stages only the specified spec folder, commits it, and pushes the current branch.
+- `scripts/render-markdown-html.ts` — Writes a sibling `.html` for a markdown file or every `.md` in a spec folder; prints absolute paths.
+- `scripts/finalize-specs.ts` — Regenerates HTML twins, then stages only the specified spec folder, commits it, and pushes the current branch.

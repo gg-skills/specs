@@ -59,7 +59,9 @@ Do **not** use when the fix is a single file change with a known location, when 
 | Path | Format | Producer |
 |------|--------|----------|
 | `.specs/YYYY-MM-DD-<slug>/NN-<topic>.md` | Markdown spec file with five required sections | Agent + `init-specs.ts` |
+| `.specs/YYYY-MM-DD-<slug>/NN-<topic>.html` | HTML twin of each spec markdown file | `render-markdown-html.ts` |
 | `.specs/YYYY-MM-DD-<slug>/README.md` | Index table, cluster analysis, and implementation order | `init-specs.ts` |
+| `.specs/YYYY-MM-DD-<slug>/README.html` | HTML twin of the index | `render-markdown-html.ts` |
 | stdout (JSON) | `{ dryRun, specsRoot, specsDir, specFiles, readmePath, slug, date, count }` from init; `{ dryRun, repoRoot, branchName, specsDir, specCount, commitMessage, pushed }` from finalize | scripts |
 
 ### External commands
@@ -67,6 +69,7 @@ Do **not** use when the fix is a single file change with a known location, when 
 | Command | When called | Purpose |
 |---------|-------------|---------|
 | `npx tsx scripts/init-specs.ts` | Start of a spec session | Scaffolds the dated folder with N numbered placeholder files and a README |
+| `npx tsx scripts/render-markdown-html.ts` | After any spec markdown write | Writes sibling HTML and prints absolute paths |
 | `npx tsx scripts/finalize-specs.ts` | End of a spec session | Stages the spec folder, commits with an auto-generated message, and pushes |
 | `git add -- <relative-path>` | Inside `finalize-specs.ts` | Stages only the spec directory, nothing else |
 | `git commit -m <message>` | Inside `finalize-specs.ts` | Creates a scoped commit (`specs(ux): publish <folder> (N specs)`) |
@@ -120,6 +123,7 @@ specs/
 │   └── spec-template.md        # Required five-section template for individual specs
 └── scripts/
     ├── init-specs.ts           # Scaffold a dated spec folder with placeholder files
+    ├── render-markdown-html.ts # Sibling HTML for spec markdown
     └── finalize-specs.ts       # Stage, commit, and push the completed spec folder
 ```
 
@@ -153,6 +157,6 @@ npx tsx .claude/skills/specs/scripts/finalize-specs.ts --latest
 - Specs require concrete evidence (runbook docs, study findings, or test results). Do not create specs from speculation alone.
 - The finalize script stages **only** files inside the target spec folder. Keep unrelated changes unstaged before running it.
 - Number specs in priority order: Critical issues get the lowest numbers, not discovery order.
-- All paths inside spec files must be repository-relative. Absolute paths will break portability.
+- All paths inside spec files must be repository-relative. Absolute paths will break portability. User-facing delivery still reports **absolute paths** to the spec markdown files and their HTML twins.
 - Every spec set must end with a `CHOOSEABLE_OPTIONS` block before finalizing — the finalize script does not enforce this but the skill policy does.
 - The `--date` override exists for backfill scenarios; omit it in normal use to let the script date the folder automatically.

@@ -6,6 +6,7 @@ interface:
   brand_color: '#22C55E'
   default_prompt: >-
     Create investigation-ready spec files under .specs that link observed behavior to source code
-    entry points. Bridge runbook findings, study outputs, or audit results into actionable developer
+    entry points. After writing spec markdown, generate sibling HTML and report absolute paths to
+    both. Bridge runbook findings, study outputs, or audit results into actionable developer
     briefs with user journeys and key files tables. Reference
     specs/SKILL.md when cross-referencing this skill.
