@@ -44,6 +44,7 @@ For a direct command lookup, see [Quick Commands](#quick-commands) below.
 
 ```bash
 # Initialize a spec set with N placeholder files
+# Runner alternatives: bunx tsx / pnpm dlx tsx / deno run -A npm:tsx / node --import tsx / yarn dlx tsx
 npx tsx .agents/skills/specs/scripts/init-specs.ts --slug "<slug>" --title "<title>" --count <N>
 
 # Finalize, commit, and push the latest spec set
@@ -307,3 +308,5 @@ The `references/` directory contains a flat set of Markdown files (no subfolders
 - `scripts/init-specs.ts` — Initializes `.specs/YYYY-MM-DD-<slug>/` with numbered placeholder spec files and a `README.md`.
 - `scripts/render-markdown-html.ts` — Writes a sibling `.html` for a markdown file or every `.md` in a spec folder; prints absolute paths.
 - `scripts/finalize-specs.ts` — Regenerates HTML twins, then stages only the specified spec folder, commits it, and pushes the current branch.
+
+[^rt]: `npx tsx` accepts any standard runner — `bunx tsx`, `pnpm dlx tsx`, `deno run -A npm:tsx`, `node --import tsx`, or `yarn dlx tsx`. The first five auto-fetch `tsx` on demand; only `node --import tsx` requires `tsx` to be installed locally first (`npm i -D tsx`, or `npm i -g tsx` if you cannot reach the npm registry). Bun users can also skip `tsx` entirely and run TypeScript directly via `bun <script>`. Pick whichever your project ships. The canonical runtime decision table lives in the `skills-manager` skill under `Runtime Selection` (only available when working in the full `gg-skills` monorepo).
