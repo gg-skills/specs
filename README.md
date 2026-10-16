@@ -103,7 +103,7 @@ flowchart TD
     F --> G{All links\nresolve?}
     G -- No --> F
     G -- Yes --> H[Reorder by priority\nCritical = lowest numbers]
-    H --> I[Add CHOOSEABLE_OPTIONS block\nplans · study · research · compare]
+    H --> I[Add CHOOSEABLE_OPTIONS block\nplans · study · research · compare\nIMPROVE when no check]
     I --> J["Run finalize-specs.ts\n--latest or --specs-dir"]
     J --> K{Pre-staged\nchanges?}
     K -- Yes --> L([Abort — commit\nor unstage first])
@@ -159,4 +159,5 @@ npx tsx .claude/skills/specs/scripts/finalize-specs.ts --latest
 - Number specs in priority order: Critical issues get the lowest numbers, not discovery order.
 - All paths inside spec files must be repository-relative. Absolute paths will break portability. User-facing delivery still reports **absolute paths** to the spec markdown files and their HTML twins.
 - Every spec set must end with a `CHOOSEABLE_OPTIONS` block before finalizing — the finalize script does not enforce this but the skill policy does.
+- When Current or Desired behavior has no check, offer `IMPROVE_INSTRUMENTATION`. This skill does not add the probe. `plan` runs instrumentation later only when a required check has zero runnable methods.
 - The `--date` override exists for backfill scenarios; omit it in normal use to let the script date the folder automatically.

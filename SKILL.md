@@ -212,6 +212,12 @@ Required option families (rename to fit context):
 
 Optional: `GENERATE_VISUAL_EXPLANATION_PACKET` through explain when sequencing is dense or cross-cutting.
 
+When Current or Desired behavior cannot be checked because no probe answers it, also offer the option below beside `GENERATE_IMPLEMENTATION_PLAN`. If the spec can already name a command that checks that behavior, cite the command and omit this option. Do not run the option and do not edit the project. `plan` is what later runs instrumentation when zero baseline methods exist.
+
+| Option | Purpose |
+|--------|---------|
+| `IMPROVE_INSTRUMENTATION` | Hand off to `improve-instrumentation` for the named behavior that has no check. Pass the spec path and the behavior. |
+
 ## Cross-Skill Handoffs
 
 ### AUTO_TRIGGER_WHEN
@@ -245,6 +251,8 @@ Optional: `GENERATE_VISUAL_EXPLANATION_PACKET` through explain when sequencing i
    - suggest `research-online/SKILL.md`.
 8. Spec clusters are correct but too dense for fast sequencing:
    - suggest `explain/SKILL.md`.
+9. Current or Desired behavior has no command, probe, health route, log, or page that answers it:
+   - suggest `IMPROVE_INSTRUMENTATION` via `improve-instrumentation/SKILL.md`. Do not start it from this skill.
 
 ### BLOCKING_GATES
 
@@ -267,6 +275,8 @@ Optional: `GENERATE_VISUAL_EXPLANATION_PACKET` through explain when sequencing i
    - specs folder path, comparison scope, axes (root cause overlap, file overlap, sequencing, risk, validation cost), recommended decision.
 6. To `explain/SKILL.md`:
    - specs folder path, cluster or sequencing question, highest-priority files/contracts, recommended downstream action.
+7. To `improve-instrumentation/SKILL.md`, only after the operator picks `IMPROVE_INSTRUMENTATION`:
+   - spec path, named behavior, and the question a run must answer.
 
 ## Troubleshooting
 
