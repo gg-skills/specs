@@ -216,7 +216,7 @@ When Current or Desired behavior cannot be checked because no probe answers it, 
 
 | Option | Purpose |
 |--------|---------|
-| `IMPROVE_INSTRUMENTATION` | Hand off to `improve-instrumentation` for the named behavior that has no check. Pass the spec path and the behavior. |
+| `IMPROVE_INSTRUMENTATION` | Hand off to `instrumentation` for the named behavior that has no check. Pass the spec path and the behavior. |
 
 ## Cross-Skill Handoffs
 
@@ -252,7 +252,7 @@ When Current or Desired behavior cannot be checked because no probe answers it, 
 8. Spec clusters are correct but too dense for fast sequencing:
    - suggest `explain/SKILL.md`.
 9. Current or Desired behavior has no command, probe, health route, log, or page that answers it:
-   - suggest `IMPROVE_INSTRUMENTATION` via `improve-instrumentation/SKILL.md`. Do not start it from this skill.
+   - suggest `IMPROVE_INSTRUMENTATION` via `instrumentation/SKILL.md`. Do not start it from this skill.
 
 ### BLOCKING_GATES
 
@@ -275,7 +275,7 @@ When Current or Desired behavior cannot be checked because no probe answers it, 
    - specs folder path, comparison scope, axes (root cause overlap, file overlap, sequencing, risk, validation cost), recommended decision.
 6. To `explain/SKILL.md`:
    - specs folder path, cluster or sequencing question, highest-priority files/contracts, recommended downstream action.
-7. To `improve-instrumentation/SKILL.md`, only after the operator picks `IMPROVE_INSTRUMENTATION`:
+7. To `instrumentation/SKILL.md`, only after the operator picks `IMPROVE_INSTRUMENTATION`:
    - spec path, named behavior, and the question a run must answer.
 
 ## Troubleshooting
