@@ -1,0 +1,1 @@
+A developer brief links an observed behavior directly to its source.

@@ -1,0 +1,1 @@
+A linked document and code glyph represent a brief that connects observed behavior to a source entry point.
