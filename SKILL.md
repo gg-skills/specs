@@ -252,7 +252,7 @@ When Current or Desired behavior cannot be checked because no probe answers it, 
 8. Spec clusters are correct but too dense for fast sequencing:
    - suggest `explain/SKILL.md`.
 9. Current or Desired behavior has no command, probe, health route, log, or page that answers it:
-   - suggest `IMPROVE_INSTRUMENTATION` via `instrumentation/SKILL.md`. Do not start it from this skill.
+   - suggest `IMPROVE_INSTRUMENTATION` via the project’s instrumentation workflow. Do not start it from this skill.
 
 ### BLOCKING_GATES
 
@@ -275,7 +275,7 @@ When Current or Desired behavior cannot be checked because no probe answers it, 
    - specs folder path, comparison scope, axes (root cause overlap, file overlap, sequencing, risk, validation cost), recommended decision.
 6. To `explain/SKILL.md`:
    - specs folder path, cluster or sequencing question, highest-priority files/contracts, recommended downstream action.
-7. To `instrumentation/SKILL.md`, only after the operator picks `IMPROVE_INSTRUMENTATION`:
+7. To the project’s instrumentation workflow, only after the operator picks `IMPROVE_INSTRUMENTATION`:
    - spec path, named behavior, and the question a run must answer.
 
 ## Troubleshooting
@@ -319,4 +319,4 @@ The `references/` directory contains a flat set of Markdown files (no subfolders
 - `scripts/render-markdown-html.ts` — Writes a sibling `.html` for a markdown file or every `.md` in a spec folder; prints absolute paths.
 - `scripts/finalize-specs.ts` — Regenerates HTML twins, then stages only the specified spec folder, commits it, and pushes the current branch.
 
-[^rt]: `npx tsx` accepts any standard runner — `bunx tsx`, `pnpm dlx tsx`, `deno run -A npm:tsx`, `node --import tsx`, or `yarn dlx tsx`. The first five auto-fetch `tsx` on demand; only `node --import tsx` requires `tsx` to be installed locally first (`npm i -D tsx`, or `npm i -g tsx` if you cannot reach the npm registry). Bun users can also skip `tsx` entirely and run TypeScript directly via `bun <script>`. Pick whichever your project ships. The canonical runtime decision table lives in the `skills-manager` skill under `Runtime Selection` (only available when working in the full `gg-skills` monorepo).
+[^rt]: `npx tsx` accepts any standard runner — `bunx tsx`, `pnpm dlx tsx`, `deno run -A npm:tsx`, `node --import tsx`, or `yarn dlx tsx`. The first five auto-fetch `tsx` on demand; only `node --import tsx` requires `tsx` to be installed locally first (`npm i -D tsx`, or `npm i -g tsx` if you cannot reach the npm registry). Bun users can also skip `tsx` entirely and run TypeScript directly via `bun <script>`. Pick whichever your project ships.
